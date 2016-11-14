@@ -1,0 +1,30 @@
+{
+  "name": "procurios/phpunit-adapter",
+  "description": "Compatibility layer for packages needing to support older versions of phpunit.",
+  "license": "MIT",
+  "keywords": [
+    "phpunit",
+    "compatibility",
+    "adapter",
+    "phpunit5",
+    "phpunit4"
+  ],
+  "require": {
+    "php": ">=5.3"
+  },
+  "require-dev": {
+    "phpunit/phpunit": ">=3.4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Procurios\\TDD\\PhpunitAdapter\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Procurios\\TDD\\PhpunitAdapter\\test\\": "test/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
