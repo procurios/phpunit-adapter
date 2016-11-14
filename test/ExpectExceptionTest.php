@@ -125,7 +125,7 @@ class ExpectExceptionTest extends PhpunitAdapterTestCase
         try {
             $exceptionThrown = false;
             $testCase = new self($failingMethod);
-            $testCase->runBare();
+            $testCase->runTest();
         } catch (PHPUnit_Framework_ExpectationFailedException $e) {
             $exceptionThrown = true;
         }
