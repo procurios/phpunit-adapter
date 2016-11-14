@@ -1,4 +1,6 @@
 # phpunit-adapter
+[![Build Status](https://travis-ci.org/procurios/phpunit-adapter.svg?branch=master)](https://travis-ci.org/procurios/phpunit-adapter)
+
 When new features come available in [PHPUnit](https://phpunit.de/) you will not always be able to use them directly
 due to several possible reasons.
 
