@@ -135,14 +135,14 @@ class ExpectExceptionTest extends PhpunitAdapterTestCase
 
     public function provideFailingMethods()
     {
-        return [
-            ['letExpectExceptionFail'],
-            ['letExpectExceptionCodeFail'],
-            ['letExpectExceptionCodeFailWithOtherExpectations'],
-            ['letExpectExceptionMessageFail'],
-            ['letExpectExceptionMessageFailWithOtherExpectations'],
-            ['letExpectExceptionMessageRegExpFail'],
-            ['letExpectExceptionMessageRegExpFailWithOtherExpectations'],
-        ];
+        return array(
+            array('letExpectExceptionFail'),
+            array('letExpectExceptionCodeFail'),
+            array('letExpectExceptionCodeFailWithOtherExpectations'),
+            array('letExpectExceptionMessageFail'),
+            array('letExpectExceptionMessageFailWithOtherExpectations'),
+            array('letExpectExceptionMessageRegExpFail'),
+            array('letExpectExceptionMessageRegExpFailWithOtherExpectations'),
+        );
     }
 }
