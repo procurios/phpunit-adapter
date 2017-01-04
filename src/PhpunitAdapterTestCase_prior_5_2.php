@@ -13,7 +13,7 @@ use PHPUnit_Util_InvalidArgumentHelper;
 abstract class PhpunitAdapterTestCase_prior_5_2 extends PhpunitAdapterTestCase_5_2
 {
     private $adaptExceptionClass;
-    private $adaptExceptionCode = null;
+    private $adaptExceptionCode;
     private $adaptExceptionMessage = '';
     private $adaptExceptionRegExp;
     private $adaptRealMethodName;
@@ -81,7 +81,7 @@ abstract class PhpunitAdapterTestCase_prior_5_2 extends PhpunitAdapterTestCase_5
 
     private function adaptUpdateExpectedException()
     {
-        if (isset($this->adaptExceptionClass)) {
+        if ($this->adaptExceptionClass !== null) {
             $this->setExpectedException($this->adaptExceptionClass, $this->adaptExceptionMessage, $this->adaptExceptionCode);
         }
     }
@@ -109,7 +109,7 @@ abstract class PhpunitAdapterTestCase_prior_5_2 extends PhpunitAdapterTestCase_5
         try {
             return call_user_func_array(array($this, $this->adaptRealMethodName), func_get_args());
         } catch (Exception $e) {
-            if (isset($this->adaptExceptionRegExp)) {
+            if ($this->adaptExceptionRegExp !== null) {
                 $this->assertRegExp($this->adaptExceptionRegExp, $e->getMessage());
             }
 

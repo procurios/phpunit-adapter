@@ -6,13 +6,15 @@ namespace Procurios\TDD\PhpunitAdapter;
 
 use ReflectionClass;
 
+$baseClass = null;
+
 // Detect the version of PHPUnit we are running on by using class reflection
 $reflectionClass = new ReflectionClass('PHPUnit_Framework_TestCase');
 if ($reflectionClass->hasMethod('expectException')) {
     $baseClass = 'Procurios\TDD\PhpunitAdapter\PhpunitAdapterTestCase_5_2';
 }
 
-if (isset($baseClass)) {
+if ($baseClass !== null) {
     // Runtime definition of the PhpunitAdapterTestCase class
     $classDefinition = <<< PHP
 namespace Procurios\TDD\PhpunitAdapter;
