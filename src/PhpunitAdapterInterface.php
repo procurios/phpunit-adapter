@@ -7,7 +7,7 @@ namespace Procurios\TDD\PhpunitAdapter;
 use PHPUnit_Framework_Exception;
 
 /**
- * Interface providing all available methods
+ * Interface providing all methods extended in the adapter classes
  */
 interface PhpunitAdapterInterface
 {
@@ -47,17 +47,33 @@ interface PhpunitAdapterInterface
      */
     public function expectExceptionMessageRegExp($messageRegExp);
 
+    # endregion
+
+    # region Changes in PHPUnit 5.0.0
+
     /**
-     * @param mixed $exception
+     * Asserts that a variable is finite.
+     *
+     * @param mixed $actual
      * @param string $message
-     * @param int|string $code
-     *
-     * @throws PHPUnit_Framework_Exception
-     *
-     * @since      Method available since Release 3.2.0
-     * @deprecated Method deprecated since Release 5.2.0
      */
-    public function setExpectedException($exception, $message = '', $code = null);
+    public static function assertFinite($actual, $message = '');
+
+    /**
+     * Asserts that a variable is infinite.
+     *
+     * @param mixed $actual
+     * @param string $message
+     */
+    public static function assertInfinite($actual, $message = '');
+
+    /**
+     * Asserts that a variable is nan.
+     *
+     * @param mixed $actual
+     * @param string $message
+     */
+    public static function assertNan($actual, $message = '');
 
     # endregion
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * © 2016 Procurios
+ * © 2017 Procurios
  */
 namespace Procurios\TDD\PhpunitAdapter;
 
@@ -8,9 +8,9 @@ use Exception;
 use PHPUnit_Util_InvalidArgumentHelper;
 
 /**
- * Compatibility layer for running phpunit < 5.2
+ * Adapter for phpunit 5.0.0
  */
-abstract class PhpunitAdapterTestCase_prior_5_2 extends PhpunitAdapterTestCase_5_2
+abstract class PhpunitAdapterTestCase_5_0_0 extends PhpunitAdapterTestCase_5_2_0
 {
     private $adaptExceptionClass;
     private $adaptExceptionCode;
@@ -82,7 +82,11 @@ abstract class PhpunitAdapterTestCase_prior_5_2 extends PhpunitAdapterTestCase_5
     private function adaptUpdateExpectedException()
     {
         if ($this->adaptExceptionClass !== null) {
-            $this->setExpectedException($this->adaptExceptionClass, $this->adaptExceptionMessage, $this->adaptExceptionCode);
+            $this->setExpectedException(
+                $this->adaptExceptionClass,
+                $this->adaptExceptionMessage,
+                $this->adaptExceptionCode
+            );
         }
     }
 

@@ -12,17 +12,4 @@ new features of PHPUnit supporting older versions.
 Instead of extending the `PHPUnit_Framework_TestCase` class, you'ld simply extend the `Procurios\TDD\PhpunitAdapter\PhpunitAdapterTestCase` class and you're done!
 
 ## Features
-Below you'll find a list of features this package provides per PHPUnit version you run this package on.
-
-### PHPUnit >= 5.2.0
-No changes applied, extending the `PhpunitAdapterTestCase` is the same as extending `PHPUnit_Framework_TestCase` directly.
-
-### PHPUnit < 5.2.0
-**Added**
-- `expectException`
-- `expectExceptionCode`
-- `expectExceptionMessage`
-- `expectExceptionMessageRegExp`
-
-**Deprecated**
-- `setExpectedException`
+This package only extends the `PHPUnit_Framework_TestCase` class. You will be able to use any method available in phpunit 5.2.0.

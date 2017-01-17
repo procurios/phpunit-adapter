@@ -6,13 +6,11 @@ namespace Procurios\TDD\PhpunitAdapter\test;
 
 use Exception;
 use InvalidArgumentException;
-use PHPUnit_Framework_ExpectationFailedException;
-use Procurios\TDD\PhpunitAdapter\PhpunitAdapterTestCase;
 
 /**
- * Make sure that the expectException* calls work
+ * Test features added in phpunit 5.2.0
  */
-class ExpectExceptionTest extends PhpunitAdapterTestCase
+class PHPUnit5_2_0Test extends PhpunitAdapterTestCaseWithFailingMethods
 {
     public function testExpectException()
     {
@@ -114,35 +112,5 @@ class ExpectExceptionTest extends PhpunitAdapterTestCase
         $this->expectExceptionMessage('bar');
         $this->expectExceptionMessageRegExp('(^foo$)');
         throw new InvalidArgumentException('bar', 123);
-    }
-
-    /**
-     * @dataProvider provideFailingMethods
-     * @param string $failingMethod
-     */
-    public function testThatExpectExceptionMethodsCanFail($failingMethod)
-    {
-        try {
-            $exceptionThrown = false;
-            $testCase = new self($failingMethod);
-            $testCase->runTest();
-        } catch (PHPUnit_Framework_ExpectationFailedException $e) {
-            $exceptionThrown = true;
-        }
-
-        $this->assertTrue($exceptionThrown);
-    }
-
-    public function provideFailingMethods()
-    {
-        return array(
-            array('letExpectExceptionFail'),
-            array('letExpectExceptionCodeFail'),
-            array('letExpectExceptionCodeFailWithOtherExpectations'),
-            array('letExpectExceptionMessageFail'),
-            array('letExpectExceptionMessageFailWithOtherExpectations'),
-            array('letExpectExceptionMessageRegExpFail'),
-            array('letExpectExceptionMessageRegExpFailWithOtherExpectations'),
-        );
     }
 }
