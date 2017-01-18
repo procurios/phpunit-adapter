@@ -6,17 +6,25 @@ namespace Procurios\TDD\PhpunitAdapter;
 
 use ReflectionClass;
 
-$baseClass = null;
+/**
+ * Detect the version of PHPUnit we are running on by using class reflection
+ * @return null|string
+ */
+function detectBaseClass()
+{
+    $reflectionClass = new ReflectionClass('PHPUnit_Framework_TestCase');
+    if ($reflectionClass->hasMethod('expectException')) {
+        return 'Procurios\TDD\PhpunitAdapter\PhpunitAdapterTestCase_5_2_0';
+    }
 
-// Detect the version of PHPUnit we are running on by using class reflection
-$reflectionClass = new ReflectionClass('PHPUnit_Framework_TestCase');
-if ($reflectionClass->hasMethod('expectException')) {
-    $baseClass = 'Procurios\TDD\PhpunitAdapter\PhpunitAdapterTestCase_5_2_0';
+    if ($reflectionClass->hasMethod('getMockWithoutInvokingTheOriginalConstructor')) {
+        return 'Procurios\TDD\PhpunitAdapter\PhpunitAdapterTestCase_5_0_0';
+    }
+
+    return null;
 }
 
-if ($reflectionClass->hasMethod('getMockWithoutInvokingTheOriginalConstructor')) {
-    $baseClass = 'Procurios\TDD\PhpunitAdapter\PhpunitAdapterTestCase_5_0_0';
-}
+$baseClass = detectBaseClass();
 
 if ($baseClass !== null) {
     // Runtime definition of the PhpunitAdapterTestCase class
