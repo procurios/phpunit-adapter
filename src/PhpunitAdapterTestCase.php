@@ -1,6 +1,6 @@
 <?php
 /**
- * © 2016 Procurios
+ * © 2017 Procurios
  */
 namespace Procurios\TDD\PhpunitAdapter;
 
@@ -17,6 +17,10 @@ function detectBaseClass()
     }
 
     $phpunitVersion = PHPUnit_Runner_Version::id();
+    if (version_compare($phpunitVersion, '5.3', '>=')) {
+        return 'Procurios\TDD\PhpunitAdapter\PhpunitAdapterTestCase_5_3_0';
+    }
+
     if (version_compare($phpunitVersion, '5.2', '>=')) {
         return 'Procurios\TDD\PhpunitAdapter\PhpunitAdapterTestCase_5_2_0';
     }
