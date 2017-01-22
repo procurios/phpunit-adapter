@@ -12,4 +12,4 @@ new features of PHPUnit supporting older versions.
 Instead of extending the `PHPUnit_Framework_TestCase` class, you'ld simply extend the `Procurios\TDD\PhpunitAdapter\PhpunitAdapterTestCase` class and you're done!
 
 ## Features
-This package only extends the `PHPUnit_Framework_TestCase` class. You will be able to use any method available in phpunit 5.2.0.
+This package only extends the `PHPUnit_Framework_TestCase` class. You will be able to use any method available in phpunit 5.3.0.
