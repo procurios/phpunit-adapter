@@ -4,7 +4,7 @@
  */
 namespace Procurios\TDD\PhpunitAdapter;
 
-use ReflectionClass;
+use PHPUnit_Runner_Version;
 
 /**
  * Detect the version of PHPUnit we are running on by using class reflection
@@ -12,12 +12,16 @@ use ReflectionClass;
  */
 function detectBaseClass()
 {
-    $reflectionClass = new ReflectionClass('PHPUnit_Framework_TestCase');
-    if ($reflectionClass->hasMethod('expectException')) {
+    if (!class_exists('PHPUnit_Runner_Version')) {
+        return null;
+    }
+
+    $phpunitVersion = PHPUnit_Runner_Version::id();
+    if (version_compare($phpunitVersion, '5.2', '>=')) {
         return 'Procurios\TDD\PhpunitAdapter\PhpunitAdapterTestCase_5_2_0';
     }
 
-    if ($reflectionClass->hasMethod('getMockWithoutInvokingTheOriginalConstructor')) {
+    if (version_compare($phpunitVersion, '5.0', '>=')) {
         return 'Procurios\TDD\PhpunitAdapter\PhpunitAdapterTestCase_5_0_0';
     }
 
