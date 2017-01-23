@@ -17,6 +17,10 @@ function detectBaseClass()
     }
 
     $phpunitVersion = PHPUnit_Runner_Version::id();
+    if (version_compare($phpunitVersion, '5.4', '>=')) {
+        return 'Procurios\TDD\PhpunitAdapter\PhpunitAdapterTestCase_5_4_0';
+    }
+
     if (version_compare($phpunitVersion, '5.3', '>=')) {
         return 'Procurios\TDD\PhpunitAdapter\PhpunitAdapterTestCase_5_3_0';
     }
