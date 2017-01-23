@@ -4,11 +4,11 @@
  */
 namespace Procurios\TDD\PhpunitAdapter;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Compatibility layer for running phpunit 5.4.0
  */
-abstract class PhpunitAdapterTestCase_5_4_0 extends PHPUnit_Framework_TestCase
+abstract class PhpunitAdapterTestCase_5_4_0 extends TestCase
 {
 }
